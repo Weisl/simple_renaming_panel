@@ -42,12 +42,15 @@ def drawAdvancedUI(layout, context):
             row.enabled = False
             row.label(text="Open from Outliner", icon="ERROR" )
 
-    box = layout
-    col = box.column(align=True)
-    col.prop(scene, "renaming_sorting")
-    if scene.renaming_sorting:
-        col.prop(scene, "renaming_sort_enum", expand=True)
-
+    try:
+        if context.object.mode == "OBJECT":
+            box = layout
+            col = box.column(align=True)
+            col.prop(scene, "renaming_sorting")
+            if scene.renaming_sorting:
+                col.prop(scene, "renaming_sort_enum", expand=True)
+    except:
+        pass
 
     layout.label(text="Rename")
 
